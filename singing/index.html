@@ -98,8 +98,8 @@
             document.getElementById('channel-slider').addEventListener('input', function() {
                 let value = parseFloat(this.value); // Slider value now includes floats between -1 and 1
 
-                let gainLeft = 0.5 * (1.0 + value);
-                let gainRight = 0.5 * (1.0 - value);
+                let gainLeft = (1.0 - value);
+                let gainRight = (1.0 + value);
 
                 gainNodeLeft.gain.value = gainLeft;
                 gainNodeRight.gain.value = gainRight;
