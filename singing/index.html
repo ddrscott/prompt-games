@@ -96,11 +96,15 @@
             merger.connect(audioContext.destination);
 
             document.getElementById('channel-slider').addEventListener('input', function() {
-                let value = parseFloat(this.value); // Slider value now includes floats between -1 and 1
+                let value = parseFloat(this.value),
+                    gainLeft = 0,
+                    gainRight = 0;
 
-                let gainLeft = (1.0 - value);
-                let gainRight = (1.0 + value);
-
+                if (value < 0) {
+                    gainRight = value;
+                } else if (value > 0) {
+                    gainLeft = -value;
+                }
                 gainNodeLeft.gain.value = gainLeft;
                 gainNodeRight.gain.value = gainRight;
             });
