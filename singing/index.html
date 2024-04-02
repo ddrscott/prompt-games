@@ -77,6 +77,34 @@
                 }
             });
 
+
+            let track = audioContext.createMediaElementSource(audioElement);
+
+            let splitter = audioContext.createChannelSplitter(2);
+            let merger = audioContext.createChannelMerger(2);
+
+            let gainNodeLeft = audioContext.createGain();
+            let gainNodeRight = audioContext.createGain();
+
+            track.connect(splitter);
+            splitter.connect(gainNodeLeft, 0);
+            splitter.connect(gainNodeRight, 1);
+
+            gainNodeLeft.connect(merger, 0, 0);
+            gainNodeRight.connect(merger, 0, 1);
+
+            merger.connect(audioContext.destination);
+
+            document.getElementById('channel-slider').addEventListener('input', function() {
+                let value = parseFloat(this.value); // Slider value now includes floats between -1 and 1
+
+                let gainLeft = 0.5 * (1.0 + value);
+                let gainRight = 0.5 * (1.0 - value);
+
+                gainNodeLeft.gain.value = gainLeft;
+                gainNodeRight.gain.value = gainRight;
+            });
+
             audioElement.addEventListener('timeupdate', function() {
                 let value = (this.currentTime / this.duration) * 100 || 0;
                 document.getElementById('progress-slider').value = value;
@@ -93,7 +121,6 @@
                 }
             });
 
-            let track = audioContext.createMediaElementSource(audioElement);
             track.connect(analyser);
             analyser.connect(audioContext.destination);
             analyser.fftSize = 512;
