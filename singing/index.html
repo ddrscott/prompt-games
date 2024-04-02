@@ -73,7 +73,7 @@
                 if (audioFile) {
                     audioElement.src = audioFile;
                 } else {
-                    alert('No audio file specified.');
+                    document.querySelector('#audio-player').style.display = 'none';
                 }
             });
 
