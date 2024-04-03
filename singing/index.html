@@ -2,25 +2,90 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Custom Audio Player with Channel Isolation and Visualization</title>
+        <title>Karaoke Audio Player</title>
         <style>
-            body {
-                font-family: Arial, sans-serif;
+            body, html {
                 margin: 0;
                 padding: 0;
-                background-color: #f0f0f0;
             }
+            body {
+                background-color: #f5f5f5;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: #333;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            * + * {
+                margin-top: 1em;
+            }
+            /* Style headings for better hierarchy */
+            h1, h2, h3, h4, h5, h6 {
+                color: #444;
+                line-height: 2em;
+            }
+
+            /* Improve the look of buttons */
+            button {
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+                padding: 0.625em 1.25em;
+                margin: 0.3125em;
+                border-radius: 0.3125em;
+                cursor: pointer;
+                font-size: 1em;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Style links for better visibility */
+            a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* Add some spacing and border to input elements */
+            input[type="text"], input[type="email"], input[type="password"], textarea {
+                width: 100%;
+                padding: 0.625em;
+                margin: 0.5em 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 0.25em;
+                box-sizing: border-box;
+            }
+
+
+            /* Add some padding and a max-width to the main content area */
+            main {
+                max-width: 50em; /* Adjust based on preference */
+                min-height: calc(100vh - 2.5em);
+                margin: 0 auto;
+                padding: 2em;
+                background-color: #ffffff;
+                box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
+                border-radius: 0.5em;
+            }
+
             #audio-player {
                 position: fixed;
-                bottom: 0;
                 left: 0;
                 right: 0;
-                background-color: #f0f0f0;
-                padding: .5em;
-                box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+                bottom: 0;
+                background-color: #ffffff;
+                padding: 0.625em;
+                border-radius: 0.5em;
+                box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
                 display: flex;
                 align-items: center;
-                gap: .5em;
+                gap: 0.625em;
             }
 
             #playBtn {
@@ -34,18 +99,23 @@
                 width: 3em;
             }
             #visualization {
-                position: absolute;
-                bottom: 3em;
+                position: fixed;
+                bottom: 6em;
                 left: 0;
                 right: 0;
+                width: 100%;
                 margin: auto;
-                width: 100vw;
                 height: 60px;
             }
         </style>
     </head>
     <body>
         <main>
+            <h1>Karaoke Audio Player</h1>
+            
+            <p>Song must have left and right channels separated so that left channel contains vocals and right channel contains accompliment.</p>
+
+            <p>Choose the song:</p>
             <ul>
                 <li><a href="?f=Panis-Angelicus.mp3">Panis Angelicus</a></li>
                 <li><a href="?f=Deep-River.mp3">Deep River</a></li>
@@ -183,9 +253,9 @@
                     let y = v * canvas.height/2;
 
                     if(i === 0) {
-                      ctx.moveTo(x, y);
+                        ctx.moveTo(x, y);
                     } else {
-                      ctx.lineTo(x, y);
+                        ctx.lineTo(x, y);
                     }
 
                     x += sliceWidth;
