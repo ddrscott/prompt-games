@@ -1,0 +1,107 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+main + * {
+    margin-top: 1em;
+}
+
+/* Style headings for better hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+    line-height: 2em;
+}
+
+/* Improve the look of buttons */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 0.625em 1.25em;
+    margin: 0.3125em;
+    border-radius: 0.3125em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style links for better visibility */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add some spacing and border to input elements */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 0.625em;
+    margin: 0.5em 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    box-sizing: border-box;
+}
+
+
+/* Add some padding and a max-width to the main content area */
+main {
+    max-width: 50em; /* Adjust based on preference */
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #ffffff;
+    box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
+    border-radius: 0.5em;
+}
+
+#audio-player {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #eeeeee;
+    padding: 0.625em;
+    box-shadow: 0 0 1em rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+}
+
+#playBtn {
+    min-width: 5em;
+}
+
+#progress-slider {
+    flex-grow: 1;
+}
+
+#channel-slider {
+    min-width: 2em;
+}
+
+.slider-label {
+    width: 1em;
+}
+
+#visualization {
+    position: absolute;
+    bottom: 4em;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: auto;
+    height: 60px;
+}
